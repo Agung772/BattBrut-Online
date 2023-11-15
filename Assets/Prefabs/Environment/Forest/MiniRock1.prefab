@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 3395307996025570434}
   - component: {fileID: 2385963296035953170}
   - component: {fileID: 6327581015601851468}
-  - component: {fileID: 641629109468878908}
   m_Layer: 0
   m_Name: MiniRock1
   m_TagString: Untagged
@@ -80,19 +79,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!65 &641629109468878908
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6386681946796153511}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.0013947769, y: 0.0012464575, z: 0.0008262752}
-  m_Center: {x: 0.0000013804528, y: -0.00008830783, z: 0.00022485024}
 --- !u!1 &8519299024018505517
 GameObject:
   m_ObjectHideFlags: 0

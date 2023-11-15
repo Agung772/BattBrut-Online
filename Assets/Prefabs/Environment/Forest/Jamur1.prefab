@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 7063897271271606112}
   - component: {fileID: 4877537225913540595}
   - component: {fileID: 4004072019982922904}
-  - component: {fileID: 1525814866285679095}
   m_Layer: 0
   m_Name: BatangJamur1_1
   m_TagString: Untagged
@@ -80,19 +79,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!65 &1525814866285679095
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1390763758532865067}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.0037263094, y: 0.006523565, z: 0.011352855}
-  m_Center: {x: 1.7462297e-10, y: -0.0013986279, z: 0.0038132726}
 --- !u!1 &3707550437554067197
 GameObject:
   m_ObjectHideFlags: 0
@@ -104,7 +90,6 @@ GameObject:
   - component: {fileID: 3761037642175619600}
   - component: {fileID: 2220791129169165993}
   - component: {fileID: 4961446948823443748}
-  - component: {fileID: 2492054196486044338}
   m_Layer: 0
   m_Name: BatangJamur1_2
   m_TagString: Untagged
@@ -173,19 +158,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!65 &2492054196486044338
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3707550437554067197}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.0038064334, y: 0.016269598, z: 0.017979888}
-  m_Center: {x: 0, y: 0.006231582, z: 0.007086727}
 --- !u!1 &4006667170220842429
 GameObject:
   m_ObjectHideFlags: 0
@@ -231,7 +203,6 @@ GameObject:
   - component: {fileID: 2425677900313956336}
   - component: {fileID: 4387594180978642050}
   - component: {fileID: 2732385455499696112}
-  - component: {fileID: 7316520258941390150}
   m_Layer: 0
   m_Name: PalaJamur1_1
   m_TagString: Untagged
@@ -300,19 +271,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!65 &7316520258941390150
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6747542385016496288}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.011772488, y: 0.01043909, z: 0.008067181}
-  m_Center: {x: 2.3283063e-10, y: -0.0035104894, z: 0.009327025}
 --- !u!1 &7848688617659829433
 GameObject:
   m_ObjectHideFlags: 0
@@ -324,7 +282,6 @@ GameObject:
   - component: {fileID: 280539581830246123}
   - component: {fileID: 2323400338883022255}
   - component: {fileID: 4526435330938898512}
-  - component: {fileID: 4345217359906073339}
   m_Layer: 0
   m_Name: PalaJamur1_2
   m_TagString: Untagged
@@ -393,16 +350,3 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!65 &4345217359906073339
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7848688617659829433}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.01852602, y: 0.018208725, z: 0.006281375}
-  m_Center: {x: 0.0000000013969838, y: 0.013250531, z: 0.014127439}

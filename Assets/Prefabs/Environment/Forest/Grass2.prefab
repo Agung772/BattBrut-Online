@@ -42,7 +42,6 @@ GameObject:
   - component: {fileID: 3949475713441526273}
   - component: {fileID: 3808083339614997250}
   - component: {fileID: 6085815689835732658}
-  - component: {fileID: 2962755692596148797}
   m_Layer: 0
   m_Name: Grass2
   m_TagString: Untagged
@@ -111,16 +110,3 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!65 &2962755692596148797
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1477199282494715445}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.022015447, y: 0.02, z: 0.019999964}
-  m_Center: {x: -0.0011319796, y: 0.0007958822, z: -0.0040598963}

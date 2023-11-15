@@ -88,7 +88,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 529703238364320568}
-  - component: {fileID: 5016629943881803827}
   m_Layer: 0
   m_Name: Pohon2
   m_TagString: Untagged
@@ -123,19 +122,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &5016629943881803827
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 529703238364320575}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 3.4939663, y: 5.1011877, z: 2.2377455}
-  m_Center: {x: 0.08313286, y: 2.5309129, z: 0.027710795}
 --- !u!1 &1044894176904479189
 GameObject:
   m_ObjectHideFlags: 0

@@ -33,11 +33,11 @@ public class PlayerShoot : MonoBehaviourPun
     {
         if (PhotonNetwork.IsConnected)
         {
-            PhotonNetwork.Instantiate("Projectile", pointShoot.transform.position, pointShoot.transform.rotation);
+            PhotonNetwork.Instantiate("PMG", pointShoot.transform.position, pointShoot.transform.rotation);
         }
         else
         {
-            Instantiate(Resources.Load("Projectile 1"), pointShoot.transform.position, pointShoot.transform.rotation);
+            Instantiate(Resources.Load("PMG"), pointShoot.transform.position, pointShoot.transform.rotation);
         }
 
     }

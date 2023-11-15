@@ -43,7 +43,6 @@ GameObject:
   - component: {fileID: 5020041219073644359}
   - component: {fileID: 7844275464897854647}
   - component: {fileID: 8958551833880235818}
-  - component: {fileID: 5616747435308792538}
   m_Layer: 0
   m_Name: PalaJamur3
   m_TagString: Untagged
@@ -112,19 +111,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!65 &5616747435308792538
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7149678474416427955}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.011449023, y: 0.011449024, z: 0.0073664817}
-  m_Center: {x: 2.3283063e-10, y: -2.3283064e-10, z: 0.006437732}
 --- !u!1 &8188599827593845992
 GameObject:
   m_ObjectHideFlags: 0

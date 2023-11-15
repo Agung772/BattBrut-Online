@@ -44,7 +44,6 @@ GameObject:
   - component: {fileID: 3777715917143459383}
   - component: {fileID: 2961057355959621858}
   - component: {fileID: 5611558740519466420}
-  - component: {fileID: 2249113094468571289}
   m_Layer: 0
   m_Name: Jamur2.001
   m_TagString: Untagged
@@ -113,19 +112,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!65 &2249113094468571289
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2770487129211851254}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.013257607, y: 0.011758787, z: 0.012106473}
-  m_Center: {x: -0.006579245, y: 0.004653958, z: 0.006082612}
 --- !u!1 &3507254710711142502
 GameObject:
   m_ObjectHideFlags: 0
@@ -137,7 +123,6 @@ GameObject:
   - component: {fileID: 8153555573458909205}
   - component: {fileID: 5424214976463148528}
   - component: {fileID: 4401968211925017447}
-  - component: {fileID: 7946943497076468334}
   m_Layer: 0
   m_Name: Jamur2
   m_TagString: Untagged
@@ -206,19 +191,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!65 &7946943497076468334
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3507254710711142502}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.016574377, y: 0.021354401, z: 0.017091196}
-  m_Center: {x: -0.0000000013969838, y: -0.011690064, z: 0.008479871}
 --- !u!1 &4547082395319568187
 GameObject:
   m_ObjectHideFlags: 0
@@ -230,7 +202,6 @@ GameObject:
   - component: {fileID: 567726223665625116}
   - component: {fileID: 1941270127088230991}
   - component: {fileID: 3046077654979970779}
-  - component: {fileID: 5236652037417387177}
   m_Layer: 0
   m_Name: Jamur2.002
   m_TagString: Untagged
@@ -299,16 +270,3 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!65 &5236652037417387177
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4547082395319568187}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.008878979, y: 0.007827328, z: 0.008090943}
-  m_Center: {x: 0.004500604, y: 0.0027368104, z: 0.004075448}
