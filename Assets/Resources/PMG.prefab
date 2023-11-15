@@ -14416,9 +14416,14 @@ GameObject:
   m_Component:
   - component: {fileID: 5235470241423755808}
   - component: {fileID: 144294235092946361}
+  - component: {fileID: 4144403866522342337}
   - component: {fileID: 5235470241423755811}
   - component: {fileID: 5235470241423755810}
   - component: {fileID: 3387176214327700420}
+  - component: {fileID: 916632232803089702}
+  - component: {fileID: 1998650630413288266}
+  - component: {fileID: 2205361204520414421}
+  - component: {fileID: -8457973084090301342}
   m_Layer: 0
   m_Name: PMG
   m_TagString: Untagged
@@ -14456,16 +14461,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 720eae1625198f749a572680df242797, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  activeDamage: 0
   damage: 10
   speed: 10
   destroy: 4
-  destroyCollision: 0
   destroyPlayer: 0
-  isKinematic: 0
+--- !u!114 &4144403866522342337
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5235470241423755813}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 19e1921389e1e8341828f71c5e3b98d9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  destroyCollision: 0
   isKinematicCollision: 0
   efectSentuhan: {fileID: 0}
   projectile: {fileID: 0}
-  efectSpawn: {fileID: 0}
 --- !u!135 &5235470241423755811
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -14514,3 +14530,75 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &916632232803089702
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5235470241423755813}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 3
+  OwnershipTransfer: 0
+  observableSearch: 2
+  ObservedComponents:
+  - {fileID: 1998650630413288266}
+  - {fileID: 2205361204520414421}
+  sceneViewId: 0
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
+--- !u!114 &1998650630413288266
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5235470241423755813}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64179f3720bbfe947b7724caa67b7c1d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SynchronizeVelocity: 1
+  m_SynchronizeAngularVelocity: 0
+  m_TeleportEnabled: 0
+  m_TeleportIfDistanceGreaterThan: 3
+--- !u!114 &2205361204520414421
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5235470241423755813}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 627855c7f81362d41938ffe0b1475957, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SynchronizePosition: 1
+  m_SynchronizeRotation: 1
+  m_SynchronizeScale: 1
+  m_UseLocal: 1
+--- !u!114 &-8457973084090301342
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5235470241423755813}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b8c4a61274f60b4ea5fb4299cfdbf14, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ShowLayerWeightsInspector: 1
+  ShowParameterInspector: 1
+  m_SynchronizeParameters: []
+  m_SynchronizeLayers: []

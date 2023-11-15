@@ -9,6 +9,8 @@ public class PlayerStat : MonoBehaviourPun
     public float maxHP;
     public float HP;
 
+    [Header("UI")]
+    public Image barHP;
     private void Start()
     {
         HP = maxHP;
@@ -19,6 +21,15 @@ public class PlayerStat : MonoBehaviourPun
         {
             HitPlayer(5);
         }
+        if (Input.GetKeyUp(KeyCode.Alpha1))
+        {
+            if (photonView.IsMine)
+            {
+                Manager.instance.tester++;
+                Debug.Log("Game Manager");
+            }
+
+        }
 
     }
 
@@ -28,6 +39,7 @@ public class PlayerStat : MonoBehaviourPun
         {
             HP -= damage;
             Gameplay_UI.instance.barHP.fillAmount = HP / maxHP;
+            barHP.transform.localScale = new Vector3(HP / maxHP, 1, 1);
         }
     }
 

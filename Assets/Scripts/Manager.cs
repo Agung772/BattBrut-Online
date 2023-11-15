@@ -5,6 +5,8 @@ using UnityEngine;
 public class Manager : MonoBehaviour
 {
     public static Manager instance;
+
+    public int tester;
     private void Awake()
     {
         instance = this;

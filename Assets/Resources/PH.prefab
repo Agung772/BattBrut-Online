@@ -14407,12 +14407,13 @@ GameObject:
   m_Component:
   - component: {fileID: 3493868438812382191}
   - component: {fileID: 6271769359511042212}
+  - component: {fileID: 6112355950425779422}
   - component: {fileID: 3958522709839704144}
   - component: {fileID: 2103399263827784275}
   - component: {fileID: 1954054726511353121}
   - component: {fileID: 3435062049636719339}
   - component: {fileID: 6261075380372402536}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: PH
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14451,18 +14452,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 720eae1625198f749a572680df242797, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  activeDamage: 1
   damage: 5
   speed: 50
   destroy: 5
-  efectTimeDelay: 0
-  destroyCollision: 0
   destroyPlayer: 1
-  isKinematic: 0
+--- !u!114 &6112355950425779422
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5168466909987750819}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 19e1921389e1e8341828f71c5e3b98d9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  destroyCollision: 1
   isKinematicCollision: 1
   efectSentuhan: {fileID: 2544038727981791275}
   projectile: {fileID: 1654764794351035037}
-  efectSpawn: {fileID: 2600228822869809624}
-  efectDelay: {fileID: 0}
 --- !u!135 &3958522709839704144
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -14596,7 +14606,7 @@ ParticleSystem:
   ringBufferLoopRange: {x: 0, y: 1}
   looping: 0
   prewarm: 0
-  playOnAwake: 0
+  playOnAwake: 1
   useUnscaledTime: 0
   autoRandomSeed: 1
   useRigidbodyForVelocity: 1
