@@ -14315,12 +14315,15 @@ MonoBehaviour:
   damage: 0
   speed: 0
   destroy: 3
+  efectTimeDelay: 0
   destroyCollision: 0
+  destroyPlayer: 1
   isKinematic: 1
   isKinematicCollision: 0
   efectSentuhan: {fileID: 0}
   projectile: {fileID: 1654764794351035037}
   efectSpawn: {fileID: 0}
+  efectDelay: {fileID: 0}
 --- !u!135 &3958522709839704144
 SphereCollider:
   m_ObjectHideFlags: 0

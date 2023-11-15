@@ -7,8 +7,8 @@ public class ProjectileStat : MonoBehaviour
     public float damage;
     public float speed;
     public float destroy;
-    public float efectTimeDelay;
     public bool destroyCollision;
+    public bool destroyPlayer;
 
     public bool isKinematic;
     public bool isKinematicCollision;
@@ -17,9 +17,8 @@ public class ProjectileStat : MonoBehaviour
     public ParticleSystem efectSentuhan;
     public ParticleSystem projectile;
     public ParticleSystem efectSpawn;
-    public ParticleSystem efectDelay;
 
-    Rigidbody rigidbody;
+    new Rigidbody rigidbody;
     private void Start()
     {
         rigidbody = GetComponent<Rigidbody>();
@@ -30,8 +29,6 @@ public class ProjectileStat : MonoBehaviour
 
         rigidbody.AddForce(transform.forward * speed, ForceMode.Impulse);
         Destroy(gameObject, destroy);
-
-        Invoke("EfectDelay", efectTimeDelay);
     }
     private void OnCollisionEnter(Collision collision)
     {
@@ -39,9 +36,25 @@ public class ProjectileStat : MonoBehaviour
         {
             var playerStat = collision.collider.GetComponent<PlayerStat>();
             playerStat.HitPlayer(damage);
-            Destroy(gameObject);
+            if (destroyPlayer) Destroy(gameObject);
         }
 
+        EnterColl();
+    }
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.GetComponent<PlayerStat>())
+        {
+            var playerStat = other.GetComponent<PlayerStat>();
+            playerStat.HitPlayer(damage);
+            if (destroyPlayer) Destroy(gameObject);
+        }
+
+        EnterColl();
+    }
+
+    void EnterColl()
+    {
         if (efectSentuhan != null) efectSentuhan.Play();
         if (projectile != null) projectile.Stop();
 
@@ -50,13 +63,8 @@ public class ProjectileStat : MonoBehaviour
         if (destroyCollision)
         {
             Destroy(gameObject, 2f);
-   
+
         }
     }
 
-    void EfectDelay()
-    {
-        if (efectDelay != null) efectDelay.Play();
-        rigidbody.isKinematic = true;
-    }
 }
