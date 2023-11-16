@@ -10,13 +10,17 @@ public class PlayerManajer : MonoBehaviour
     public PlayerControllerNetwork playerNetworkPrefab;
     [HideInInspector]
     public PlayerControllerNetwork localPlayerNetwork;
-    void Start()
+    private void Awake()
     {
         if (PhotonNetwork.IsConnected == false)
         {
             SceneManager.LoadScene("LobbyScene");
             return;
         }
+    }
+    void Start()
+    {
+
         PlayerControllerNetwork.RefreshInstance(ref localPlayerNetwork,
         playerNetworkPrefab);
     }

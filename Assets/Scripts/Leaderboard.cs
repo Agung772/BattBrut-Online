@@ -1,18 +1,24 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using Photon.Pun;
 public class Leaderboard : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public Transform content;
+    private void Start()
     {
-        
-    }
+        //PhotonNetwork.Instantiate(Tags.TextLeaderboard, content.position, content.rotation);
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+        for (int i = 0; i < PhotonNetwork.PlayerList.Length; i++)
+        {
+            GameObject temp = PhotonNetwork.Instantiate(Tags.TextLeaderboard, content.position, content.rotation);
+
+            temp.transform.SetParent(content);
+            temp.transform.localScale = Vector3.one;
+
+            TextLeaderboard textLeaderboard = temp.GetComponent<TextLeaderboard>();
+            textLeaderboard.nameText.text = PhotonNetwork.PlayerList[i].NickName;
+        }
+
     }
 }

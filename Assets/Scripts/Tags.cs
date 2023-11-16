@@ -8,4 +8,7 @@ public class Tags : MonoBehaviour
     public static readonly string AnimasiMove = "AnimasiMove";
     public static readonly string Jump = "Jump";
     public static readonly string DoubleJump= "DoubleJump";
+
+    //Object Resources
+    public static readonly string TextLeaderboard = "TextLeaderboard";
 }
