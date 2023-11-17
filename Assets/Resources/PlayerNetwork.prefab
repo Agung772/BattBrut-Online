@@ -450,8 +450,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speedShoot: 50
-  projectilePrefab: {fileID: 5168466909987750819, guid: 9ad5a4b0e945bbb4e9e1fb6eb3d3f978,
-    type: 3}
+  dataProjectile: {fileID: 11400000, guid: 666cef68431ffe24baf8cea5c80fd5a9, type: 2}
   pointShoot: {fileID: 436217195}
 --- !u!114 &6780937221641943062
 MonoBehaviour:

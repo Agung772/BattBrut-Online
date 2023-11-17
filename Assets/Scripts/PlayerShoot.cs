@@ -1,12 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using Photon.Pun;
 public class PlayerShoot : MonoBehaviourPun
 {
     [SerializeField] float speedShoot;
-    public GameObject projectilePrefab;
-    GameObject projectileNetwork;
+    public DataProjectile dataProjectile;
     [SerializeField] Transform pointShoot;
 
     EventButton shootButton;
@@ -14,12 +14,17 @@ public class PlayerShoot : MonoBehaviourPun
 
     private void Start()
     {
-        playerControllerNetwork = GetComponent<PlayerControllerNetwork>();
-        shootButton = Gameplay_UI.instance.shootButton;
+        if (photonView.IsMine)
+        {
+            playerControllerNetwork = GetComponent<PlayerControllerNetwork>();
+            shootButton = Gameplay_UI.instance.shootButton;
+            BagUI.instance.playerShoot = this;
+        }
+
     }
     private void Update()
     {
-        if (playerControllerNetwork.isControlled)
+        if (photonView.IsMine)
         {
             //PlayerShoot
             if (Input.GetKey(KeyCode.E) || shootButton.pressed)
@@ -29,16 +34,47 @@ public class PlayerShoot : MonoBehaviourPun
         }
     }
 
+    Image cooldownUI;
+    bool cooldown;
+    float cooldownTime;
     public void Shoot()
     {
-        if (PhotonNetwork.IsConnected)
+        if (cooldown) return;
+        StartCoroutine(Coroutine());
+        IEnumerator Coroutine()
         {
-            PhotonNetwork.Instantiate("PMG", pointShoot.transform.position, pointShoot.transform.rotation);
+            cooldown = true;
+            if (PhotonNetwork.IsConnected)
+            {
+                PhotonNetwork.Instantiate(dataProjectile.projectilePrefab.name, pointShoot.transform.position, pointShoot.transform.rotation);
+            }
+            else
+            {
+                Instantiate(Resources.Load(dataProjectile.projectilePrefab.name), pointShoot.transform.position, pointShoot.transform.rotation);
+            }
+
+            yield return new WaitForSeconds(dataProjectile.cooldownTime);
+            cooldown = false;
         }
-        else
+
+        StartCoroutine(CoroutineUI());
+        IEnumerator CoroutineUI()
         {
-            Instantiate(Resources.Load("PMG"), pointShoot.transform.position, pointShoot.transform.rotation);
+            cooldownTime = dataProjectile.cooldownTime;
+            while (cooldownTime >= 0)
+            {
+                cooldownTime -= Time.deltaTime;
+                cooldownUI.fillAmount = cooldownTime / dataProjectile.cooldownTime;
+                yield return null;
+            }
         }
+    }
+
+    public void SetProjectile(DataProjectile data, Image ui)
+    {
+        dataProjectile = data;
+        cooldownUI = ui;
+
 
     }
 

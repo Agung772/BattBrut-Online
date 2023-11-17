@@ -20,12 +20,7 @@ public class PlayerManajer : MonoBehaviour
     }
     void Start()
     {
-
         PlayerControllerNetwork.RefreshInstance(ref localPlayerNetwork,
         playerNetworkPrefab);
-    }
-    // Update is called once per frame
-    void Update()
-    {
     }
 }
