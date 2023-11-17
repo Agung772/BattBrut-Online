@@ -450,7 +450,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speedShoot: 50
-  dataProjectile: {fileID: 11400000, guid: 666cef68431ffe24baf8cea5c80fd5a9, type: 2}
+  dataProjectile: {fileID: 0}
   pointShoot: {fileID: 436217195}
 --- !u!114 &6780937221641943062
 MonoBehaviour:

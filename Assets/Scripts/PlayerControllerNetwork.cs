@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using UnityEngine;
 public class PlayerControllerNetwork : MonoBehaviourPun
 {
-    CinemachineFreeLook cinemachineFreeLook;
+    CinemachineVirtualCamera cinemachineFreeLook;
     public bool isControlled = true;
 
     JumpButton jumpButton;
@@ -50,7 +50,7 @@ public class PlayerControllerNetwork : MonoBehaviourPun
         DontDestroyOnLoad(gameObject);
         if (isControlled)
         {
-            cinemachineFreeLook = FindObjectOfType<CinemachineFreeLook>();
+            cinemachineFreeLook = FindObjectOfType<CinemachineVirtualCamera>();
             cinemachineFreeLook.Follow = gameObject.transform;
             cinemachineFreeLook.LookAt = gameObject.transform;
             cam = GameObject.FindGameObjectWithTag("MainCamera");
@@ -140,7 +140,7 @@ public class PlayerControllerNetwork : MonoBehaviourPun
         PlayerControllerNetwork prefab)
     {
         var position = Vector3.zero;
-        var rotation = Quaternion.identity;
+        var rotation = Quaternion.Euler(0, 90, 0);
         if (playerControllerNetwork != null)
         {
             position = playerControllerNetwork.transform.position;

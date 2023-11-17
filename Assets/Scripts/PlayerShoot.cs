@@ -39,35 +39,43 @@ public class PlayerShoot : MonoBehaviourPun
     float cooldownTime;
     public void Shoot()
     {
-        if (cooldown) return;
-        StartCoroutine(Coroutine());
-        IEnumerator Coroutine()
+        if (dataProjectile != null)
         {
-            cooldown = true;
-            if (PhotonNetwork.IsConnected)
+            if (cooldown) return;
+            StartCoroutine(Coroutine());
+            IEnumerator Coroutine()
             {
-                PhotonNetwork.Instantiate(dataProjectile.projectilePrefab.name, pointShoot.transform.position, pointShoot.transform.rotation);
-            }
-            else
-            {
-                Instantiate(Resources.Load(dataProjectile.projectilePrefab.name), pointShoot.transform.position, pointShoot.transform.rotation);
+                cooldown = true;
+                if (PhotonNetwork.IsConnected)
+                {
+                    PhotonNetwork.Instantiate(dataProjectile.projectilePrefab.name, pointShoot.transform.position, pointShoot.transform.rotation);
+                }
+                else
+                {
+                    Instantiate(Resources.Load(dataProjectile.projectilePrefab.name), pointShoot.transform.position, pointShoot.transform.rotation);
+                }
+
+                yield return new WaitForSeconds(dataProjectile.cooldownTime);
+                cooldown = false;
             }
 
-            yield return new WaitForSeconds(dataProjectile.cooldownTime);
-            cooldown = false;
-        }
-
-        StartCoroutine(CoroutineUI());
-        IEnumerator CoroutineUI()
-        {
-            cooldownTime = dataProjectile.cooldownTime;
-            while (cooldownTime >= 0)
+            StartCoroutine(CoroutineUI());
+            IEnumerator CoroutineUI()
             {
-                cooldownTime -= Time.deltaTime;
-                cooldownUI.fillAmount = cooldownTime / dataProjectile.cooldownTime;
-                yield return null;
+                cooldownTime = dataProjectile.cooldownTime;
+                while (cooldownTime >= 0)
+                {
+                    cooldownTime -= Time.deltaTime;
+                    cooldownUI.fillAmount = cooldownTime / dataProjectile.cooldownTime;
+                    yield return null;
+                }
             }
         }
+        else
+        {
+            UIManager.instance.SetNotifText("Tidak ada Item!");
+        }
+
     }
 
     public void SetProjectile(DataProjectile data, Image ui)
