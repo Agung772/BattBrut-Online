@@ -1,8 +1,9 @@
-﻿using System.Collections;
+﻿using Photon.Pun;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ProjectileStat : MonoBehaviour
+public class ProjectileStat : MonoBehaviourPun
 {
     public bool activeDamage;
     public float damage;
@@ -19,7 +20,11 @@ public class ProjectileStat : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         rb.AddForce(transform.forward * speed, ForceMode.Impulse);
-        Destroy(gameObject, destroy);
+        Invoke(nameof(Destroy), destroy);
+    }
+    void Destory()
+    {
+        PhotonNetwork.Destroy(gameObject);
     }
     private void OnCollisionEnter(Collision collision)
     {

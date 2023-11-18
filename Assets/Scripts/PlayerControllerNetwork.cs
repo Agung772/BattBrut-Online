@@ -28,7 +28,8 @@ public class PlayerControllerNetwork : MonoBehaviourPun
     Vector3 velocity;
     float turnSmoothVelocity;
     float canJump = 0f;
-    float horizontal;
+    [HideInInspector]
+    public float horizontal;
     float vertical;
     bool isGrounded;
 

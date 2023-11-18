@@ -335,6 +335,7 @@ public class ManajerJaringan : MonoBehaviourPunCallbacks
         roomOptions.MaxPlayers = 20;
 
         PhotonNetwork.CreateRoom(roomName, roomOptions);
+        
     }
 
     void ClearRoomListView()

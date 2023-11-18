@@ -4,10 +4,23 @@ using UnityEngine;
 using Photon.Pun;
 public class Leaderboard : MonoBehaviour
 {
+    public static Leaderboard instance;
     public Transform content;
+    private void Awake()
+    {
+        instance = this;
+    }
     private void Start()
     {
-        //PhotonNetwork.Instantiate(Tags.TextLeaderboard, content.position, content.rotation);
+
+    }
+
+    public void SetLeaderboard()
+    {
+        for (int i = 0; i < content.childCount; i++)
+        {
+            Destroy(content.GetChild(i).gameObject);
+        }
 
         for (int i = 0; i < PhotonNetwork.PlayerList.Length; i++)
         {
@@ -18,7 +31,19 @@ public class Leaderboard : MonoBehaviour
 
             TextLeaderboard textLeaderboard = temp.GetComponent<TextLeaderboard>();
             textLeaderboard.nameText.text = PhotonNetwork.PlayerList[i].NickName;
+            textLeaderboard.killText.text = "Kill " + PhotonNetwork.PlayerList[i].CustomProperties["kill"];
         }
-
     }
+
+    //public void SetLeaderboard(string name, int kill)
+    //{
+    //    GameObject temp = PhotonNetwork.Instantiate(Tags.TextLeaderboard, content.position, content.rotation);
+
+    //    temp.transform.SetParent(content);
+    //    temp.transform.localScale = Vector3.one;
+
+    //    TextLeaderboard textleaderboard = temp.GetComponent<TextLeaderboard>();
+    //    textleaderboard.nameText.text = name; 
+    //    textleaderboard.killText.text = "Kill " + kill; 
+    //}
 }

@@ -11,10 +11,6 @@ public class ProjectileEfect : MonoBehaviour
     public ParticleSystem projectile;
 
     Rigidbody rb;
-    private void Start()
-    {
-        rb = GetComponent<Rigidbody>();
-    }
 
     private void OnCollisionEnter(Collision collision)
     {
@@ -22,10 +18,13 @@ public class ProjectileEfect : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
+
         EnterColl();
     }
     void EnterColl()
     {
+        if (rb == null) rb = GetComponent<Rigidbody>();
+
         if (efectSentuhan != null) efectSentuhan.Play();
         if (projectile != null) projectile.Stop();
 

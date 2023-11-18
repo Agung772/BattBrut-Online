@@ -420,6 +420,7 @@ MonoBehaviour:
     m_Bits: 256
   groundCheck: {fileID: 6780937220672575228}
   animator: {fileID: 4258461936264886275}
+  horizontal: 0
   maxJump: 2
   currentTransformY: 0
 --- !u!114 &922502937
