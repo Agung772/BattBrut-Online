@@ -66,6 +66,7 @@ public class ManajerJaringan : MonoBehaviourPunCallbacks
         {
 
             PhotonNetwork.LocalPlayer.NickName = playerName;
+            PhotonNetwork.LocalPlayer.SetCustomProperties(null);
             PhotonNetwork.ConnectUsingSettings();
         }
         else

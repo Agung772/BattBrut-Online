@@ -3,13 +3,16 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using Photon.Pun;
-public class PlayerStat : MonoBehaviourPun
+using TMPro;
+public class PlayerStat : MonoBehaviourPunCallbacks
 {
     public float maxHP;
     public float HP;
 
     [Header("UI")]
+    public RectTransform canvas;
     public Image barHP;
+    public TextMeshProUGUI nameText;
 
     PlayerControllerNetwork player;
     private void Start()
@@ -21,10 +24,15 @@ public class PlayerStat : MonoBehaviourPun
 
 
         }
-
+        SetName();
     }
     private void Update()
     {
+        if (photonView.IsMine)
+        {
+            SetBarUI();
+        }
+
         if (Input.GetKeyUp(KeyCode.Q))
         {
             HitPlayer(5);
@@ -83,6 +91,16 @@ public class PlayerStat : MonoBehaviourPun
         }
 
     }
+
+    void SetName()
+    {
+        PhotonView photonView = GetComponent<PhotonView>();
+        nameText.text = photonView.Controller.NickName;
+        for (int i = 0; i < PhotonNetwork.PlayerList.Length; i++)
+        {
+
+        }
+    }
     public void HitPlayer(float damage)
     {
         if (photonView.IsMine)
@@ -97,7 +115,11 @@ public class PlayerStat : MonoBehaviourPun
     {
         if (player.horizontal > 0)
         {
-            barHP.transform.rotation = Quaternion.Euler(0, 90, 0);
+            canvas.localRotation = Quaternion.Euler(0, -90, 0);
+        }
+        else if (player.horizontal < 0)
+        {
+            canvas.localRotation = Quaternion.Euler(0, 90, 0);
         }
     }
 }
