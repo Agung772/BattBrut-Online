@@ -20,12 +20,9 @@ public class ProjectileStat : MonoBehaviourPun
     {
         rb = GetComponent<Rigidbody>();
         rb.AddForce(transform.forward * speed, ForceMode.Impulse);
-        Invoke(nameof(Destroy), destroy);
+        Destroy(gameObject, destroy);
     }
-    void Destory()
-    {
-        PhotonNetwork.Destroy(gameObject);
-    }
+
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.collider.GetComponent<PlayerStat>() && !use && activeDamage)
