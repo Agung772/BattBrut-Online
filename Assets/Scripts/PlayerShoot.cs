@@ -26,12 +26,16 @@ public class PlayerShoot : MonoBehaviourPun
     {
         if (photonView.IsMine)
         {
-            //PlayerShoot
             if (Input.GetKey(KeyCode.E) || shootButton.pressed)
             {
-                photonView.RPC("Shoot", RpcTarget.All);
+                Shoot();
+                //GetComponent<PhotonView>().RPC("Shoot", RpcTarget.All);
+                //photonView.RPC("Shoot", RpcTarget.All);
+                Debug.LogError("Shoot nya si : " + photonView.Controller.NickName);
             }
         }
+        //PlayerShoot
+
     }
 
     Image cooldownUI;
