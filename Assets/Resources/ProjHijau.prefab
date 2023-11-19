@@ -14413,7 +14413,7 @@ GameObject:
   - component: {fileID: 1954054726511353121}
   - component: {fileID: 3435062049636719339}
   - component: {fileID: 6261075380372402536}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: ProjHijau
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14456,7 +14456,9 @@ MonoBehaviour:
   damage: 5
   speed: 50
   destroy: 5
+  destroyTimeColl: 0
   destroyPlayer: 1
+  playerStat: {fileID: 0}
 --- !u!114 &6112355950425779422
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14470,9 +14472,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   destroyCollision: 1
+  destroyTimeCollision: 2
   isKinematicCollision: 1
   efectSentuhan: {fileID: 2544038727981791275}
   projectile: {fileID: 1654764794351035037}
+  animatorEnter: 0
 --- !u!135 &3958522709839704144
 SphereCollider:
   m_ObjectHideFlags: 0

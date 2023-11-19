@@ -14317,6 +14317,7 @@ MonoBehaviour:
   damage: 0
   speed: 0
   destroy: 3
+  destroyTimeColl: 0
   destroyPlayer: 0
 --- !u!114 &555161025452614141
 MonoBehaviour:
@@ -14331,9 +14332,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   destroyCollision: 0
+  destroyTimeCollision: 2
   isKinematicCollision: 0
   efectSentuhan: {fileID: 0}
   projectile: {fileID: 0}
+  animatorEnter: 0
 --- !u!135 &3958522709839704144
 SphereCollider:
   m_ObjectHideFlags: 0

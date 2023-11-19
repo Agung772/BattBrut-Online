@@ -5,10 +5,12 @@ using UnityEngine;
 public class ProjectileEfect : MonoBehaviour
 {
     public bool destroyCollision;
+    public float destroyTimeCollision = 2;
     public bool isKinematicCollision;
     [Header("Efect")]
     public ParticleSystem efectSentuhan;
     public ParticleSystem projectile;
+    public bool animatorEnter;
 
     Rigidbody rb;
 
@@ -27,13 +29,13 @@ public class ProjectileEfect : MonoBehaviour
 
         if (efectSentuhan != null) efectSentuhan.Play();
         if (projectile != null) projectile.Stop();
+        if (animatorEnter) GetComponent<Animator>().SetTrigger("Enter");
 
         rb.isKinematic = isKinematicCollision;
 
         if (destroyCollision)
         {
-            Destroy(gameObject, 2f);
-
+            Destroy(gameObject, destroyTimeCollision);
         }
     }
 }

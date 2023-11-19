@@ -479,6 +479,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHP: 100
   HP: 0
+  kill: 0
   canvas: {fileID: 3300396024046435320}
   barHP: {fileID: 6568302956069620072}
   nameText: {fileID: 49379357295488760}

@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class Tags : MonoBehaviour
 {
+    //Player
+    public static readonly string Kill = "Kill";
+
     //Animations player
     public static readonly string AnimasiMove = "AnimasiMove";
     public static readonly string Jump = "Jump";

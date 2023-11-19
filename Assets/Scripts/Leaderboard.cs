@@ -5,14 +5,13 @@ using Photon.Pun;
 public class Leaderboard : MonoBehaviour
 {
     public static Leaderboard instance;
+
+    public int[] killPlayers;
+
     public Transform content;
     private void Awake()
     {
         instance = this;
-    }
-    private void Start()
-    {
-
     }
 
     public void SetLeaderboard()
@@ -31,19 +30,9 @@ public class Leaderboard : MonoBehaviour
 
             TextLeaderboard textLeaderboard = temp.GetComponent<TextLeaderboard>();
             textLeaderboard.nameText.text = PhotonNetwork.PlayerList[i].NickName;
-            textLeaderboard.killText.text = "Kill " + PhotonNetwork.PlayerList[i].CustomProperties["kill"];
+            textLeaderboard.killText.text = "Kill " + PhotonNetwork.PlayerList[i].CustomProperties[Tags.Kill];
         }
+
+
     }
-
-    //public void SetLeaderboard(string name, int kill)
-    //{
-    //    GameObject temp = PhotonNetwork.Instantiate(Tags.TextLeaderboard, content.position, content.rotation);
-
-    //    temp.transform.SetParent(content);
-    //    temp.transform.localScale = Vector3.one;
-
-    //    TextLeaderboard textleaderboard = temp.GetComponent<TextLeaderboard>();
-    //    textleaderboard.nameText.text = name; 
-    //    textleaderboard.killText.text = "Kill " + kill; 
-    //}
 }

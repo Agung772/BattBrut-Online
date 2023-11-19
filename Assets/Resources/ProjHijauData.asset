@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 302ae6e4a66ac234d9b5041730627a5a, type: 3}
-  m_Name: PMG
+  m_Name: ProjHijauData
   m_EditorClassIdentifier: 
   icon: {fileID: 21300000, guid: 9866a92691696b346901281f2b329034, type: 3}
-  cooldownTime: 1
-  projectilePrefab: {fileID: 5235470241423755813, guid: ffe102e703683b049a79d7e951e530c2,
+  cooldownTime: 0.03
+  projectilePrefab: {fileID: 5168466909987750819, guid: 259b665ae2b191541ab9f8602f3c52d9,
     type: 3}

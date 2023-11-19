@@ -9,10 +9,13 @@ public class ProjectileStat : MonoBehaviourPun
     public float damage;
     public float speed;
     public float destroy;
+    public float destroyTimeColl;
 
     public bool destroyPlayer;
 
 
+
+    public PlayerStat playerStat;
     Rigidbody rb;
 
     bool use;
@@ -29,8 +32,8 @@ public class ProjectileStat : MonoBehaviourPun
         {
             use = true;
             var playerStat = collision.collider.GetComponent<PlayerStat>();
-            playerStat.HitPlayer(damage);
-            if (destroyPlayer) Destroy(gameObject);
+            playerStat.HitPlayer(playerStat, damage);
+            if (destroyPlayer) Destroy(gameObject, destroyTimeColl);
         }
     }
     private void OnTriggerEnter(Collider other)
@@ -39,10 +42,14 @@ public class ProjectileStat : MonoBehaviourPun
         {
             use = true;
             var playerStat = other.GetComponent<PlayerStat>();
-            playerStat.HitPlayer(damage);
-            if (destroyPlayer) Destroy(gameObject);
+            playerStat.HitPlayer(playerStat, damage);
+            if (destroyPlayer) Destroy(gameObject, destroyTimeColl);
         }
     }
 
+    void EnterColl()
+    {
+
+    }
 
 }

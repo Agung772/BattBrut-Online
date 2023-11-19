@@ -48,7 +48,8 @@ public class PlayerShoot : MonoBehaviourPun
                 cooldown = true;
                 if (PhotonNetwork.IsConnected)
                 {
-                    PhotonNetwork.Instantiate(dataProjectile.projectilePrefab.name, pointShoot.transform.position, pointShoot.transform.rotation);
+                    GameObject projectile = PhotonNetwork.Instantiate(dataProjectile.projectilePrefab.name, pointShoot.transform.position, pointShoot.transform.rotation);
+                    projectile.GetComponent<ProjectileStat>().playerStat = GetComponent<PlayerStat>();
                 }
                 else
                 {

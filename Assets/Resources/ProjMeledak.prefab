@@ -14424,7 +14424,7 @@ GameObject:
   - component: {fileID: 1998650630413288266}
   - component: {fileID: 2205361204520414421}
   - component: {fileID: -8457973084090301342}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: ProjMeledak
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14465,6 +14465,7 @@ MonoBehaviour:
   damage: 10
   speed: 10
   destroy: 4
+  destroyTimeColl: 0
   destroyPlayer: 0
 --- !u!114 &4144403866522342337
 MonoBehaviour:
@@ -14479,9 +14480,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   destroyCollision: 0
+  destroyTimeCollision: 2
   isKinematicCollision: 0
   efectSentuhan: {fileID: 0}
   projectile: {fileID: 0}
+  animatorEnter: 0
 --- !u!135 &5235470241423755811
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -14551,6 +14554,7 @@ MonoBehaviour:
   ObservedComponents:
   - {fileID: 1998650630413288266}
   - {fileID: 2205361204520414421}
+  - {fileID: -8457973084090301342}
   sceneViewId: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0

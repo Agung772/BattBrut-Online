@@ -11,5 +11,12 @@ public class Manager : MonoBehaviour
     {
         instance = this;
         Application.targetFrameRate = 60;
+
+        StartCoroutine(Delayed());
+        IEnumerator Delayed()
+        {
+            yield return new WaitForSeconds(0.1f);
+
+        }
     }
 }
