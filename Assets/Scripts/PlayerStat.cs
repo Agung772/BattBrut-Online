@@ -8,6 +8,7 @@ public class PlayerStat : MonoBehaviourPunCallbacks
 {
     public float maxHP;
     public float HP;
+    public string name;
 
     public int kill;
 
@@ -22,10 +23,11 @@ public class PlayerStat : MonoBehaviourPunCallbacks
         if (photonView.IsMine)
         {
             player = GetComponent<PlayerControllerNetwork>();
-            HP = maxHP;
+
 
             KillingPlayer();
         }
+        HP = maxHP;
         SetName();
     }
     private void Update()
@@ -37,7 +39,7 @@ public class PlayerStat : MonoBehaviourPunCallbacks
 
         if (Input.GetKeyUp(KeyCode.Q))
         {
-            HitPlayer(this,5);
+            HitPlayer(photonView.name, 5);
         }
         if (Input.GetKeyUp(KeyCode.Alpha1))
         {
@@ -63,18 +65,20 @@ public class PlayerStat : MonoBehaviourPunCallbacks
 
         }
     }
-    public void HitPlayer(PlayerStat playerStat,float damage)
+    [PunRPC]
+    public void HitPlayer(string namePlayer,float damage)
     {
         if (photonView.IsMine && HP > 0)
         {
+            Debug.Log("Darah saat ini : " + HP);
             HP -= damage;
             Gameplay_UI.instance.barHP.fillAmount = HP / maxHP;
             barHP.transform.localScale = new Vector3(HP / maxHP, 1, 1);
+            name = namePlayer;
 
             if (HP <= 0)
             {
-                playerStat.kill++;
-                playerStat.KillingPlayer();
+
             }
         }
     }

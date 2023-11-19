@@ -14319,6 +14319,7 @@ MonoBehaviour:
   destroy: 3
   destroyTimeColl: 0
   destroyPlayer: 0
+  playerStat: {fileID: 0}
 --- !u!114 &555161025452614141
 MonoBehaviour:
   m_ObjectHideFlags: 0
