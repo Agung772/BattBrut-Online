@@ -47,6 +47,30 @@ public class BagUI : MonoBehaviour
 
             cdUI[0].fillAmount = 0;
         }
+        if (Input.GetKeyUp(KeyCode.Alpha3))
+        {
+            if (dataProjectiles[2] != null)
+            {
+                indexItem = 2;
+                playerShoot.SetProjectile(dataProjectiles[2], cdUI[2]);
+            }
+            setItemUI[0].gameObject.SetActive(false);
+            setItemUI[1].gameObject.SetActive(true);
+
+            cdUI[0].fillAmount = 0;
+        }
+        if (Input.GetKeyUp(KeyCode.Alpha4))
+        {
+            if (dataProjectiles[3] != null)
+            {
+                indexItem = 3;
+                playerShoot.SetProjectile(dataProjectiles[3], cdUI[3]);
+            }
+            setItemUI[0].gameObject.SetActive(false);
+            setItemUI[1].gameObject.SetActive(true);
+
+            cdUI[0].fillAmount = 0;
+        }
     }
 
     public void SetItem(DataProjectile data)

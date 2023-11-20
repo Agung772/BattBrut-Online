@@ -52,6 +52,7 @@ public class PlayerStat : MonoBehaviourPunCallbacks
         }
         if (Input.GetKeyUp(KeyCode.K))
         {
+            kill++;
             KillingPlayer();
         }
     }

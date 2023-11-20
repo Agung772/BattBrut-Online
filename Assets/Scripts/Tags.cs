@@ -12,6 +12,7 @@ public class Tags : MonoBehaviour
     public static readonly string Jump = "Jump";
     public static readonly string DoubleJump = "DoubleJump";
     public static readonly string Dance = "Dance";
+    public static readonly string Dash = "Dash";
 
     //Object Resources
     public static readonly string TextLeaderboard = "TextLeaderboard";

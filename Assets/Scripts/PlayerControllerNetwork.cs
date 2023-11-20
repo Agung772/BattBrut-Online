@@ -25,9 +25,10 @@ public class PlayerControllerNetwork : MonoBehaviourPun
 
     GameObject cam;
     Vector3 move;
-    Vector3 velocity;
+    public Vector3 velocity;
     float turnSmoothVelocity;
     float canJump = 0f;
+    float canDash= 1f;
     [HideInInspector]
     public float horizontal;
     float vertical;
@@ -98,11 +99,11 @@ public class PlayerControllerNetwork : MonoBehaviourPun
             bool hasVerticalInput = !Mathf.Approximately(vertical, 0f);
 
             //if ((Input.GetKey(KeyCode.Space) || jumpButton.pressed) && isGrounded && Time.time > canJump)
-            if ((Input.GetKey(KeyCode.Space) || jumpButton.pressed) && Time.time > canJump && countJump > 0)
+            if ((Input.GetKey(KeyCode.Space) || jumpButton.pressed) && Time.time > canJump && countJump > 0 )
             {
                 velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
                 canJump = Time.time + 0.3f;
-                print("Jump");
+                Debug.Log("Jump");
 
                 isGrounded = false;
                 countJump--;
@@ -122,6 +123,20 @@ public class PlayerControllerNetwork : MonoBehaviourPun
             {
                 countJump = maxJump;
             }
+
+            if (Input.GetKey(KeyCode.LeftShift) && Time.time > canDash)
+            {
+                if (horizontal > 0) velocity.x = 10;
+                else if (horizontal < 0) velocity.x = -10;
+
+                canDash = Time.time + 1;
+                Debug.Log("Dash");
+                animator.SetTrigger(Tags.Dash);
+            }
+
+            if (velocity.x > 0.5f) velocity.x += gravity * Time.deltaTime;
+            else if (velocity.x < -0.5f) velocity.x -= gravity * Time.deltaTime;
+            else velocity.x = 0;
 
             velocity.y += gravity * Time.deltaTime;
             characterController.Move(velocity * Time.deltaTime);

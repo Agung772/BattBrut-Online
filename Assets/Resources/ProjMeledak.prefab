@@ -14467,6 +14467,10 @@ MonoBehaviour:
   destroy: 4
   destroyTimeColl: 0
   destroyPlayer: 0
+  ownNamePlayer: 
+  playerStat: {fileID: 0}
+  Coll: 0
+  Trig: 0
 --- !u!114 &4144403866522342337
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -31,8 +31,6 @@ public class PlayerShoot : MonoBehaviourPun
                 //Shoot();
                 //GetComponent<PhotonView>().RPC("Shoot", RpcTarget.All);
 
-                Debug.LogError("Shoot nya si : " + photonView.Controller.NickName);
-
                 if (dataProjectile != null)
                 {
                     photonView.RPC("Shoot", RpcTarget.All);
@@ -91,7 +89,6 @@ public class PlayerShoot : MonoBehaviourPun
         else
         {
             UIManager.instance.SetNotifText("Tidak ada Item!");
-            Debug.LogError("Tidak diketahui " + photonView.IsMine, gameObject);
         }
 
     }
