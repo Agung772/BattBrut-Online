@@ -34,8 +34,17 @@ public class PlayerShoot : MonoBehaviourPun
                 Debug.LogError("Shoot nya si : " + photonView.Controller.NickName);
             }
         }
+        if (Input.GetKeyDown(KeyCode.T))
+        {
+            photonView.RPC("Tester", RpcTarget.All);
+        }
         //PlayerShoot
 
+    }
+    [PunRPC]
+    public void Tester()
+    {
+        Debug.LogError("Tester");
     }
 
     Image cooldownUI;
