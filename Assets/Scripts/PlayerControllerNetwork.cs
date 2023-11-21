@@ -113,6 +113,7 @@ public class PlayerControllerNetwork : MonoBehaviourPun
 
                 isGrounded = false;
                 onGrounded = false;
+                animator.SetBool(Tags.Ground, false);
                 countJump--;
 
                 //Animation
@@ -130,7 +131,7 @@ public class PlayerControllerNetwork : MonoBehaviourPun
             {
                 onGrounded = true;
                 countJump = maxJump;
-                animator.SetTrigger(Tags.Ground);
+                animator.SetBool(Tags.Ground, true);
             }
 
             if (Input.GetKey(KeyCode.LeftShift))
@@ -145,7 +146,9 @@ public class PlayerControllerNetwork : MonoBehaviourPun
             }
 
             CheckDoubleClick(KeyCode.A, ref lastClickTimeKey1);
-            CheckDoubleClick(KeyCode.D, ref lastClickTimeKey2);
+            CheckDoubleClick(KeyCode.D, ref lastClickTimeKey2);            
+            CheckDoubleClick(KeyCode.LeftArrow, ref lastClickTimeKey1);
+            CheckDoubleClick(KeyCode.RightArrow, ref lastClickTimeKey2);
 
             if (velocity.x > 0.5f) velocity.x += gravity * Time.deltaTime;
             else if (velocity.x < -0.5f) velocity.x -= gravity * Time.deltaTime;
@@ -177,7 +180,7 @@ public class PlayerControllerNetwork : MonoBehaviourPun
 
             if (timeSinceLastClick <= doubleClickDelay)
             {
-                if (targetKey == KeyCode.A)
+                if (targetKey == KeyCode.A || targetKey == KeyCode.LeftArrow)
                 {
                     if (horizontal > 0) velocity.x = 10;
                     else if (horizontal < 0) velocity.x = -10;
@@ -186,7 +189,7 @@ public class PlayerControllerNetwork : MonoBehaviourPun
                     Debug.Log("Dash");
                     animator.SetTrigger(Tags.Dash);
                 }
-                else if (targetKey == KeyCode.D)
+                else if (targetKey == KeyCode.D || targetKey == KeyCode.RightArrow)
                 {
                     if (horizontal > 0) velocity.x = 10;
                     else if (horizontal < 0) velocity.x = -10;
