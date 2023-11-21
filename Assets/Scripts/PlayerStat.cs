@@ -35,6 +35,12 @@ public class PlayerStat : MonoBehaviourPunCallbacks
         if (photonView.IsMine)
         {
             SetBarUI();
+
+            if (Input.GetKeyUp(KeyCode.K))
+            {
+                kill++;
+                KillingPlayer();
+            }
         }
 
         if (Input.GetKeyUp(KeyCode.Q))
@@ -50,21 +56,13 @@ public class PlayerStat : MonoBehaviourPunCallbacks
             }
 
         }
-        if (Input.GetKeyUp(KeyCode.K))
-        {
-            kill++;
-            KillingPlayer();
-        }
+
     }
 
     void SetName()
     {
         PhotonView photonView = GetComponent<PhotonView>();
         nameText.text = photonView.Controller.NickName;
-        for (int i = 0; i < PhotonNetwork.PlayerList.Length; i++)
-        {
-
-        }
     }
     [PunRPC]
     public void HitPlayer(string namePlayer,float damage)

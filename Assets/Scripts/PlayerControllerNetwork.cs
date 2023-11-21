@@ -8,9 +8,11 @@ public class PlayerControllerNetwork : MonoBehaviourPun
     CinemachineVirtualCamera cinemachineFreeLook;
     public bool isControlled = true;
 
-    JumpButton jumpButton;
+    EventButton jumpButton;
     public float turnSmoothTime = 0.1f;
-    public float movementSpeed = 4f;
+    public float movementSpeedMax = 4f;
+    public float onRun;
+    float movementSpeed = 4f;
     public float jumpHeight = 2f;
     public float gravity = -9.81f;
     public float groundDistance = 0.25f;
@@ -33,9 +35,11 @@ public class PlayerControllerNetwork : MonoBehaviourPun
     public float horizontal;
     float vertical;
     bool isGrounded;
+    bool onGrounded;
 
     public int maxJump;
     int countJump;
+
 
     [HideInInspector]
     public float currentTransformY;
@@ -57,7 +61,9 @@ public class PlayerControllerNetwork : MonoBehaviourPun
             cinemachineFreeLook.LookAt = gameObject.transform;
             cam = GameObject.FindGameObjectWithTag("MainCamera");
 
-            jumpButton = FindObjectOfType<JumpButton>();
+            movementSpeed = movementSpeedMax;
+
+            jumpButton = Gameplay_UI.instance.jumpButton;
             playerShoot = GetComponent<PlayerShoot>();
         }
         characterController = GetComponent<CharacterController>();
@@ -106,6 +112,7 @@ public class PlayerControllerNetwork : MonoBehaviourPun
                 Debug.Log("Jump");
 
                 isGrounded = false;
+                onGrounded = false;
                 countJump--;
 
                 //Animation
@@ -119,20 +126,26 @@ public class PlayerControllerNetwork : MonoBehaviourPun
                     animator.SetTrigger(Tags.DoubleJump);
                 }
             }
-            if (isGrounded && Time.time > canJump)
+            if (isGrounded && !onGrounded && Time.time > canJump)
             {
+                onGrounded = true;
                 countJump = maxJump;
+                animator.SetTrigger(Tags.Ground);
             }
 
-            if (Input.GetKey(KeyCode.LeftShift) && Time.time > canDash)
+            if (Input.GetKey(KeyCode.LeftShift))
             {
-                if (horizontal > 0) velocity.x = 10;
-                else if (horizontal < 0) velocity.x = -10;
-
-                canDash = Time.time + 1;
-                Debug.Log("Dash");
-                animator.SetTrigger(Tags.Dash);
+                movementSpeed = movementSpeedMax * 2.5f;
+                onRun = 0.5f;
             }
+            else
+            {
+                movementSpeed = movementSpeedMax;
+                onRun = 0;
+            }
+
+            CheckDoubleClick(KeyCode.A, ref lastClickTimeKey1);
+            CheckDoubleClick(KeyCode.D, ref lastClickTimeKey2);
 
             if (velocity.x > 0.5f) velocity.x += gravity * Time.deltaTime;
             else if (velocity.x < -0.5f) velocity.x -= gravity * Time.deltaTime;
@@ -147,10 +160,48 @@ public class PlayerControllerNetwork : MonoBehaviourPun
 
             //Animation
             float anim = new Vector2(horizontal, vertical).magnitude;
-            animator.SetFloat(Tags.AnimasiMove, anim);
+            animator.SetFloat(Tags.AnimasiMove, (anim / 2) + onRun);
         }
 
 
+    }
+    public float doubleClickDelay = 0.5f; // Sesuaikan dengan kebutuhan Anda
+
+    private float lastClickTimeKey1;
+    private float lastClickTimeKey2;
+    private void CheckDoubleClick(KeyCode targetKey, ref float lastClickTime)
+    {
+        if (Input.GetKeyDown(targetKey))
+        {
+            float timeSinceLastClick = Time.time - lastClickTime;
+
+            if (timeSinceLastClick <= doubleClickDelay)
+            {
+                if (targetKey == KeyCode.A)
+                {
+                    if (horizontal > 0) velocity.x = 10;
+                    else if (horizontal < 0) velocity.x = -10;
+
+                    canDash = Time.time + 1;
+                    Debug.Log("Dash");
+                    animator.SetTrigger(Tags.Dash);
+                }
+                else if (targetKey == KeyCode.D)
+                {
+                    if (horizontal > 0) velocity.x = 10;
+                    else if (horizontal < 0) velocity.x = -10;
+
+                    canDash = Time.time + 1;
+                    Debug.Log("Dash");
+                    animator.SetTrigger(Tags.Dash);
+                }
+                lastClickTime = -1f; 
+            }
+            else
+            {
+                lastClickTime = Time.time;
+            }
+        }
     }
     public static void RefreshInstance(ref PlayerControllerNetwork playerControllerNetwork, 
         PlayerControllerNetwork prefab)

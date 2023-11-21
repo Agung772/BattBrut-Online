@@ -31,9 +31,9 @@ public class GlobalManager : MonoBehaviourPunCallbacks
             // Ini adalah perubahan pada properti pemain lokal
 
         }
+
         Leaderboard.instance.SetLeaderboard();
         UIManager.instance.SetNotifText("Ada perubahan variabel player OnPlayerPropertiesUpdate");
-
 
 
     }

@@ -10,6 +10,7 @@ public class Gameplay_UI : MonoBehaviour
     public Image barHP;
 
     public EventButton shootButton;
+    public EventButton jumpButton;
 
     private void Awake()
     {

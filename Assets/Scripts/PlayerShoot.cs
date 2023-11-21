@@ -26,15 +26,9 @@ public class PlayerShoot : MonoBehaviourPun
     {
         if (photonView.IsMine)
         {
-            if (Input.GetKey(KeyCode.E) || shootButton.pressed)
+            if ((Input.GetKey(KeyCode.E) || shootButton.pressed) && playerControllerNetwork.onRun == 0)
             {
-                //Shoot();
-                //GetComponent<PhotonView>().RPC("Shoot", RpcTarget.All);
-
-                if (dataProjectile != null)
-                {
-                    photonView.RPC("Shoot", RpcTarget.All);
-                }
+                photonView.RPC("Shoot", RpcTarget.All);
             }
         }
         if (Input.GetKeyDown(KeyCode.T))
@@ -58,39 +52,41 @@ public class PlayerShoot : MonoBehaviourPun
     [PunRPC]
     public void Shoot()
     {
-        if (dataProjectile != null)
+        if (photonView.IsMine)
         {
-            if (cooldown) return;
-            StartCoroutine(Coroutine());
-            IEnumerator Coroutine()
+            if (dataProjectile != null)
             {
-                cooldown = true;
-
-                GameObject projectile = PhotonNetwork.Instantiate(dataProjectile.projectilePrefab.name, pointShoot.transform.position, pointShoot.transform.rotation);
-                //projectile.GetComponent<ProjectileStat>().playerStat = GetComponent<PlayerStat>();
-                //projectile.GetComponent<PhotonView>().RPC("SetNamePlayer", RpcTarget.AllBuffered, PhotonNetwork.NickName);
-                projectile.GetComponent<ProjectileStat>().SetNamePlayer(PhotonNetwork.NickName);
-                yield return new WaitForSeconds(dataProjectile.cooldownTime);
-                cooldown = false;
-            }
-
-            StartCoroutine(CoroutineUI());
-            IEnumerator CoroutineUI()
-            {
-                cooldownTime = dataProjectile.cooldownTime;
-                while (cooldownTime >= 0)
+                if (cooldown) return;
+                StartCoroutine(Coroutine());
+                IEnumerator Coroutine()
                 {
-                    cooldownTime -= Time.deltaTime;
-                    cooldownUI.fillAmount = cooldownTime / dataProjectile.cooldownTime;
-                    yield return null;
+                    cooldown = true;
+
+                    GameObject projectile = PhotonNetwork.Instantiate(dataProjectile.projectilePrefab.name, pointShoot.transform.position, pointShoot.transform.rotation);
+                    //projectile.GetComponent<ProjectileStat>().playerStat = GetComponent<PlayerStat>();
+                    projectile.GetComponent<PhotonView>().RPC("SetNamePlayer", RpcTarget.AllBuffered, PhotonNetwork.NickName);
+                    //projectile.GetComponent<ProjectileStat>().SetNamePlayer(PhotonNetwork.NickName);
+                    yield return new WaitForSeconds(dataProjectile.cooldownTime);
+                    cooldown = false;
+                }
+
+                StartCoroutine(CoroutineUI());
+                IEnumerator CoroutineUI()
+                {
+                    cooldownTime = dataProjectile.cooldownTime;
+                    while (cooldownTime >= 0)
+                    {
+                        cooldownTime -= Time.deltaTime;
+                        cooldownUI.fillAmount = cooldownTime / dataProjectile.cooldownTime;
+                        yield return null;
+                    }
                 }
             }
+            else
+            {
+                UIManager.instance.SetNotifText("Tidak ada Item!");
+            }
         }
-        else
-        {
-            UIManager.instance.SetNotifText("Tidak ada Item!");
-        }
-
     }
 
     public void SetProjectile(DataProjectile data, Image ui)

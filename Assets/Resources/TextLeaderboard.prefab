@@ -318,6 +318,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db11be07a17dd5e448fb561511d7568c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  killPlayer: 0
   nameText: {fileID: 3782159962130029862}
   killText: {fileID: 2071395998175138204}
 --- !u!114 &8290623587499118257

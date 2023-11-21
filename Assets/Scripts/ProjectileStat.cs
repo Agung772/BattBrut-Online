@@ -32,7 +32,11 @@ public class ProjectileStat : MonoBehaviourPun
     [PunRPC]
     public void SetNamePlayer(string namePlayer)
     {
-        ownNamePlayer = namePlayer;
+        if (photonView.IsMine)
+        {
+            ownNamePlayer = namePlayer;
+        }
+
     }
 
     private void OnCollisionEnter(Collision collision)
