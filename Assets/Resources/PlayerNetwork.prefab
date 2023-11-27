@@ -452,6 +452,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isControlled: 1
+  canMove: 1
   turnSmoothTime: 0
   movementSpeedMax: 4
   onRun: 0

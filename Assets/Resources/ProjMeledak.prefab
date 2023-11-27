@@ -14462,7 +14462,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   activeDamage: 0
-  damage: 10
+  damage: 20
   speed: 10
   destroy: 4
   destroyTimeColl: 0
@@ -14609,4 +14609,6 @@ MonoBehaviour:
   ShowLayerWeightsInspector: 1
   ShowParameterInspector: 1
   m_SynchronizeParameters: []
-  m_SynchronizeLayers: []
+  m_SynchronizeLayers:
+  - SynchronizeType: 0
+    LayerIndex: 0

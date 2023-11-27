@@ -76,9 +76,20 @@ public class PlayerStat : MonoBehaviourPunCallbacks
             barHP.transform.localScale = new Vector3(HP / maxHP, 1, 1);
             name = namePlayer;
 
-            if (HP <= 0)
+            if (HP <= 0 && player.canMove)
             {
-                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+                StartCoroutine(Delayed());
+                IEnumerator Delayed()
+                {
+                    player.canMove = false;
+                    yield return new WaitForSeconds(3);
+                    player.RespawnPlayer();
+                    player.canMove = true;
+
+                    HP = 100;
+                    Gameplay_UI.instance.barHP.fillAmount = HP / maxHP;
+                    barHP.transform.localScale = new Vector3(HP / maxHP, 1, 1);
+                }
             }
         }
     }

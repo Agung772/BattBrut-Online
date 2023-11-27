@@ -7,6 +7,7 @@ public class PlayerControllerNetwork : MonoBehaviourPun
 {
     CinemachineVirtualCamera cinemachineFreeLook;
     public bool isControlled = true;
+    public bool canMove = true;
 
     EventButton jumpButton;
     public float turnSmoothTime = 0.1f;
@@ -72,83 +73,92 @@ public class PlayerControllerNetwork : MonoBehaviourPun
         characterController.transform.position = Vector3.up;
         characterController.enabled = true;
     } // Update is called once per frame
+
+    public void RespawnPlayer()
+    {
+        characterController.enabled = false;
+        characterController.transform.position = SpawnPoint.FindObjectOfType<SpawnPoint>().transform.position;
+        characterController.enabled = true;
+    }
     void Update()
     {
         if (isControlled)
         {
             if (characterController.transform.position.y < maxFallZone)
             {
-                characterController.enabled = false;
-                characterController.transform.position = SpawnPoint.FindObjectOfType<SpawnPoint>().transform.position;
-                characterController.enabled = true;
+                RespawnPlayer();
             }
             currentTransformY = GetComponent<Transform>().transform.eulerAngles.y;
-            horizontal = Input.GetAxisRaw("Horizontal");
-            //vertical = Input.GetAxisRaw("Vertical") + joystick.Vertical;
-            vertical = 0;
-            isGrounded = Physics.CheckSphere(groundCheck.transform.position, groundDistance, groundMask);
-            if (isGrounded && velocity.y < 0f)
+            if(canMove)
             {
-                velocity.y = -2f;
-            }
-            move = new Vector3(horizontal, 0f, vertical).normalized;
-            if (move.magnitude >= 0.1f)
-            {
-                //float targetAngle = Mathf.Atan2(move.x, move.z) * Mathf.Rad2Deg + cam.transform.eulerAngles.y;
-                float targetAngle = Mathf.Atan2(move.x, move.z) * Mathf.Rad2Deg;
-                float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnSmoothVelocity, turnSmoothTime);
-                transform.rotation = Quaternion.Euler(0f, angle, 0f);
-                Vector3 moveDirection = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
-                characterController.Move(moveDirection.normalized * movementSpeed * Time.deltaTime);
-            }
-            bool hasHorizontalInput = !Mathf.Approximately(horizontal, 0f);
-            bool hasVerticalInput = !Mathf.Approximately(vertical, 0f);
+                horizontal = Input.GetAxisRaw("Horizontal");
 
-            //if ((Input.GetKey(KeyCode.Space) || jumpButton.pressed) && isGrounded && Time.time > canJump)
-            if ((Input.GetKey(KeyCode.Space) || jumpButton.pressed) && Time.time > canJump && countJump > 0 )
-            {
-                velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
-                canJump = Time.time + 0.3f;
-                Debug.Log("Jump");
-
-                isGrounded = false;
-                onGrounded = false;
-                animator.SetBool(Tags.Ground, false);
-                countJump--;
-
-                //Animation
-
-                if (countJump == 1)
+                //vertical = Input.GetAxisRaw("Vertical") + joystick.Vertical;
+                vertical = 0;
+                isGrounded = Physics.CheckSphere(groundCheck.transform.position, groundDistance, groundMask);
+                if (isGrounded && velocity.y < 0f)
                 {
-                    animator.SetTrigger(Tags.Jump);
+                    velocity.y = -2f;
                 }
-                else if (countJump == 0)
+                move = new Vector3(horizontal, 0f, vertical).normalized;
+                if (move.magnitude >= 0.1f)
                 {
-                    animator.SetTrigger(Tags.DoubleJump);
+                    //float targetAngle = Mathf.Atan2(move.x, move.z) * Mathf.Rad2Deg + cam.transform.eulerAngles.y;
+                    float targetAngle = Mathf.Atan2(move.x, move.z) * Mathf.Rad2Deg;
+                    float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnSmoothVelocity, turnSmoothTime);
+                    transform.rotation = Quaternion.Euler(0f, angle, 0f);
+                    Vector3 moveDirection = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
+                    characterController.Move(moveDirection.normalized * movementSpeed * Time.deltaTime);
                 }
-            }
-            if (isGrounded && !onGrounded && Time.time > canJump)
-            {
-                onGrounded = true;
-                countJump = maxJump;
-                animator.SetBool(Tags.Ground, true);
-            }
+                bool hasHorizontalInput = !Mathf.Approximately(horizontal, 0f);
+                bool hasVerticalInput = !Mathf.Approximately(vertical, 0f);
 
-            if (Input.GetKey(KeyCode.LeftShift))
-            {
-                movementSpeed = movementSpeedMax * 2.5f;
-                onRun = 0.5f;
-            }
-            else
-            {
-                movementSpeed = movementSpeedMax;
-                onRun = 0;
-            }
+                //if ((Input.GetKey(KeyCode.Space) || jumpButton.pressed) && isGrounded && Time.time > canJump)
+                if ((Input.GetKey(KeyCode.Space) || jumpButton.pressed) && Time.time > canJump && countJump > 0)
+                {
+                    velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
+                    canJump = Time.time + 0.3f;
+                    Debug.Log("Jump");
 
-            CheckDoubleClick(KeyCode.A, ref lastClickTimeKey1);
-            CheckDoubleClick(KeyCode.D, ref lastClickTimeKey2);            
-            CheckDoubleClick(KeyCode.LeftArrow, ref lastClickTimeKey1);
-            CheckDoubleClick(KeyCode.RightArrow, ref lastClickTimeKey2);
+                    isGrounded = false;
+                    onGrounded = false;
+                    animator.SetBool(Tags.Ground, false);
+                    countJump--;
+
+                    //Animation
+
+                    if (countJump == 1)
+                    {
+                        animator.SetTrigger(Tags.Jump);
+                    }
+                    else if (countJump == 0)
+                    {
+                        animator.SetTrigger(Tags.DoubleJump);
+                    }
+                }
+                if (isGrounded && !onGrounded && Time.time > canJump)
+                {
+                    onGrounded = true;
+                    countJump = maxJump;
+                    animator.SetBool(Tags.Ground, true);
+                }
+
+                if (Input.GetKey(KeyCode.LeftShift))
+                {
+                    movementSpeed = movementSpeedMax * 2.5f;
+                    onRun = 0.5f;
+                }
+                else
+                {
+                    movementSpeed = movementSpeedMax;
+                    onRun = 0;
+                }
+
+                CheckDoubleClick(KeyCode.A, ref lastClickTimeKey1);
+                CheckDoubleClick(KeyCode.D, ref lastClickTimeKey2);
+                CheckDoubleClick(KeyCode.LeftArrow, ref lastClickTimeKey1);
+                CheckDoubleClick(KeyCode.RightArrow, ref lastClickTimeKey2);
+            }
 
             if (velocity.x > 0.5f) velocity.x += gravity * Time.deltaTime;
             else if (velocity.x < -0.5f) velocity.x -= gravity * Time.deltaTime;
