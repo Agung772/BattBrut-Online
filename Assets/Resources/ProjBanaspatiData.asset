@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: ProjBanaspatiData
   m_EditorClassIdentifier: 
   icon: {fileID: 21300000, guid: 9866a92691696b346901281f2b329034, type: 3}
-  cooldownTime: 0.5
+  cooldownTime: 1
   projectilePrefab: {fileID: 2895448740041642962, guid: 97b41324177f0db409e6fbf967f99e80,
     type: 3}

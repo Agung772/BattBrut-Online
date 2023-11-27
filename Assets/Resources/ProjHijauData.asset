@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: ProjHijauData
   m_EditorClassIdentifier: 
   icon: {fileID: 21300000, guid: 9866a92691696b346901281f2b329034, type: 3}
-  cooldownTime: 0.03
+  cooldownTime: 0.01
   projectilePrefab: {fileID: 5168466909987750819, guid: 259b665ae2b191541ab9f8602f3c52d9,
     type: 3}

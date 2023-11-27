@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using Photon.Pun;
 using TMPro;
+using UnityEngine.SceneManagement;
 public class PlayerStat : MonoBehaviourPunCallbacks
 {
     public float maxHP;
@@ -77,7 +78,7 @@ public class PlayerStat : MonoBehaviourPunCallbacks
 
             if (HP <= 0)
             {
-
+                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
             }
         }
     }

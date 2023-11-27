@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: ProjMeledakData
   m_EditorClassIdentifier: 
   icon: {fileID: 21300000, guid: 9866a92691696b346901281f2b329034, type: 3}
-  cooldownTime: 1
+  cooldownTime: 1.5
   projectilePrefab: {fileID: 5235470241423755813, guid: ffe102e703683b049a79d7e951e530c2,
     type: 3}

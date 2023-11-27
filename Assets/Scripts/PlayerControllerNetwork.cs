@@ -187,7 +187,9 @@ public class PlayerControllerNetwork : MonoBehaviourPun
 
                     canDash = Time.time + 1;
                     Debug.Log("Dash");
-                    animator.SetTrigger(Tags.Dash);
+
+                    if (isGrounded) animator.SetTrigger(Tags.Dash);
+                    else animator.SetTrigger(Tags.FlyDash);
                 }
                 else if (targetKey == KeyCode.D || targetKey == KeyCode.RightArrow)
                 {
@@ -196,7 +198,8 @@ public class PlayerControllerNetwork : MonoBehaviourPun
 
                     canDash = Time.time + 1;
                     Debug.Log("Dash");
-                    animator.SetTrigger(Tags.Dash);
+                    if (isGrounded) animator.SetTrigger(Tags.Dash);
+                    else animator.SetTrigger(Tags.FlyDash);
                 }
                 lastClickTime = -1f; 
             }

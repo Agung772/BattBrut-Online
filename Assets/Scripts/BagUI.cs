@@ -30,9 +30,7 @@ public class BagUI : MonoBehaviour
                 indexItem = 0;
                 playerShoot.SetProjectile(dataProjectiles[0], cdUI[0]);
             }
-            setItemUI[0].gameObject.SetActive(true);
-            setItemUI[1].gameObject.SetActive(false);
-
+            SetItemUI(0);
             cdUI[1].fillAmount = 0;
         }
         if (Input.GetKeyUp(KeyCode.Alpha2))
@@ -42,8 +40,7 @@ public class BagUI : MonoBehaviour
                 indexItem = 1;
                 playerShoot.SetProjectile(dataProjectiles[1], cdUI[1]);
             }
-            setItemUI[0].gameObject.SetActive(false);
-            setItemUI[1].gameObject.SetActive(true);
+            SetItemUI(1);
 
             cdUI[0].fillAmount = 0;
         }
@@ -54,8 +51,7 @@ public class BagUI : MonoBehaviour
                 indexItem = 2;
                 playerShoot.SetProjectile(dataProjectiles[2], cdUI[2]);
             }
-            setItemUI[0].gameObject.SetActive(false);
-            setItemUI[1].gameObject.SetActive(true);
+            SetItemUI(2);
 
             cdUI[0].fillAmount = 0;
         }
@@ -66,10 +62,26 @@ public class BagUI : MonoBehaviour
                 indexItem = 3;
                 playerShoot.SetProjectile(dataProjectiles[3], cdUI[3]);
             }
-            setItemUI[0].gameObject.SetActive(false);
-            setItemUI[1].gameObject.SetActive(true);
+            SetItemUI(3);
+        }
+    }
 
-            cdUI[0].fillAmount = 0;
+
+
+    void SetItemUI(int value)
+    {
+        for (int i = 0; i < setItemUI.Length; i++)
+        {
+            setItemUI[i].gameObject.SetActive(false);
+        }
+        setItemUI[value].gameObject.SetActive(true);
+
+        for (int i = 0; i < cdUI.Length; i++)
+        {
+            if (i != value)
+            {
+                cdUI[i].fillAmount = 0;
+            }
         }
     }
 
