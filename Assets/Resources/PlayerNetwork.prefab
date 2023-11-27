@@ -680,25 +680,25 @@ MonoBehaviour:
     SynchronizeType: 2
     Name: DoubleJump
   - Type: 9
-    SynchronizeType: 0
+    SynchronizeType: 2
     Name: Dance1
   - Type: 9
-    SynchronizeType: 0
+    SynchronizeType: 2
     Name: Dance2
   - Type: 9
-    SynchronizeType: 0
+    SynchronizeType: 2
     Name: Dance3
   - Type: 9
-    SynchronizeType: 0
+    SynchronizeType: 2
     Name: Dance4
   - Type: 9
-    SynchronizeType: 0
+    SynchronizeType: 2
     Name: Dash
   - Type: 9
-    SynchronizeType: 0
+    SynchronizeType: 2
     Name: Ground
   - Type: 9
-    SynchronizeType: 0
+    SynchronizeType: 2
     Name: FlyDash
   m_SynchronizeLayers:
   - SynchronizeType: 2
