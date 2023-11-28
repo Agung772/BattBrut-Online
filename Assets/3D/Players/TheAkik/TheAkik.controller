@@ -180,7 +180,7 @@ BlendTree:
   m_Name: Blend Tree
   m_Childs:
   - serializedVersion: 2
-    m_Motion: {fileID: -5324238279805231817, guid: e90935c0a459801439038bceedccfac8,
+    m_Motion: {fileID: -2450978243870625273, guid: 7f0113bf52398714e90407cba540163f,
       type: 3}
     m_Threshold: 0
     m_Position: {x: 0, y: 0}
@@ -189,7 +189,7 @@ BlendTree:
     m_DirectBlendParameter: Run
     m_Mirror: 0
   - serializedVersion: 2
-    m_Motion: {fileID: -7601764218039587641, guid: e90935c0a459801439038bceedccfac8,
+    m_Motion: {fileID: -190096381706167546, guid: 7f0113bf52398714e90407cba540163f,
       type: 3}
     m_Threshold: 0.5
     m_Position: {x: 0, y: 0}
@@ -273,7 +273,7 @@ AnimatorController:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: PlayerOri
+  m_Name: TheAkik
   serializedVersion: 5
   m_AnimatorParameters:
   - m_Name: AnimasiMove

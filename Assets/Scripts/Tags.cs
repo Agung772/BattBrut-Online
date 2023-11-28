@@ -18,4 +18,10 @@ public class Tags : MonoBehaviour
 
     //Object Resources
     public static readonly string TextLeaderboard = "TextLeaderboard";
+
+
+    //Model Player
+    public static readonly string BadBoy = "BadBoy";
+    public static readonly string PinkyBoy = "PinkyBoy";
+    public static readonly string TheAkik = "TheAkik";
 }
