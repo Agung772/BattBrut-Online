@@ -5,6 +5,7 @@ using UnityEngine;
 public class Tags : MonoBehaviour
 {
     //Player
+    public static readonly string PlayerModel = "PlayerModel";
     public static readonly string Kill = "Kill";
 
     //Animations player

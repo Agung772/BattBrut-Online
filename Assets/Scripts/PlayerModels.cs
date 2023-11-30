@@ -12,7 +12,21 @@ public class PlayerModels : MonoBehaviourPun
 
     private void Start()
     {
-
+        if (photonView.IsMine)
+        {
+            if (PhotonNetwork.LocalPlayer.CustomProperties[Tags.PlayerModel] == Tags.BadBoy)
+            {
+                Set(Tags.BadBoy);
+            }
+            else if (PhotonNetwork.LocalPlayer.CustomProperties[Tags.PlayerModel] == Tags.PinkyBoy)
+            {
+                Set(Tags.PinkyBoy);
+            }
+            else if (PhotonNetwork.LocalPlayer.CustomProperties[Tags.PlayerModel] == Tags.TheAkik)
+            {
+                Set(Tags.TheAkik);
+            }
+        }
     }
     private void Update()
     {
