@@ -13,28 +13,26 @@ public class UIMainmenu : MonoBehaviourPun
 
     public void SetPlayerModel(string nameModel)
     {
-        if (photonView.IsMine)
+
+
+        if (nameModel == Tags.BadBoy || nameModel == Tags.PinkyBoy || nameModel == Tags.TheAkik)
         {
-            if (nameModel == Tags.BadBoy || nameModel == Tags.PinkyBoy || nameModel == Tags.TheAkik)
+            try
             {
-                try
-                {
-                    ExitGames.Client.Photon.Hashtable playerCustomProperties = PhotonNetwork.LocalPlayer.CustomProperties;
+                ExitGames.Client.Photon.Hashtable playerCustomProperties = PhotonNetwork.LocalPlayer.CustomProperties;
 
-                    playerCustomProperties[Tags.PlayerModel] = nameModel;
-                    PhotonNetwork.LocalPlayer.SetCustomProperties(playerCustomProperties);
+                playerCustomProperties[Tags.PlayerModel] = nameModel;
+                PhotonNetwork.LocalPlayer.SetCustomProperties(playerCustomProperties);
 
-                }
-                catch
-                {
-                    PhotonNetwork.LocalPlayer.CustomProperties[Tags.Kill] = nameModel;
-                }
             }
-            else
+            catch
             {
-                Debug.LogError("Ada yang typo di input player model");
+                PhotonNetwork.LocalPlayer.CustomProperties[Tags.PlayerModel] = nameModel;
             }
-
+        }
+        else
+        {
+            Debug.LogError("Ada yang typo di input player model");
         }
     }
 }

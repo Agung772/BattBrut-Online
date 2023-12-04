@@ -1,8 +1,8 @@
 ﻿using Photon.Pun;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEditor.Animations;
+
+
 using UnityEngine;
+
 
 public class PlayerModels : MonoBehaviourPun
 {
@@ -26,6 +26,10 @@ public class PlayerModels : MonoBehaviourPun
             {
                 Set(Tags.TheAkik);
             }
+            else
+            {
+                Debug.LogWarning("Tidak ada data model!");
+            }
         }
     }
     private void Update()
@@ -34,9 +38,16 @@ public class PlayerModels : MonoBehaviourPun
         {
             if (Input.GetKeyUp(KeyCode.Alpha9))
             {
+                Set(Tags.BadBoy);
+            }
+            if (Input.GetKeyUp(KeyCode.Alpha8))
+            {
+                Set(Tags.PinkyBoy);
+            }
+            if (Input.GetKeyUp(KeyCode.Alpha7))
+            {
                 Set(Tags.TheAkik);
             }
-
         }
     }
 
@@ -52,22 +63,25 @@ public class PlayerModels : MonoBehaviourPun
         {
             badBoy.model3D.SetActive(true);
 
-            animator.runtimeAnimatorController = badBoy.animatorController;
-            //animator.avatar = badBoy.avatar;
+            animator.runtimeAnimatorController = badBoy.animator.runtimeAnimatorController;
+            animator.avatar = badBoy.animator.avatar;
+            Destroy(badBoy.animator);
         }
         else if (nameModel == Tags.PinkyBoy)
         {
             pinkyBoy.model3D.SetActive(true);
 
-            animator.runtimeAnimatorController = pinkyBoy.animatorController;
-            //animator.avatar = pinkyBoy.avatar;
+            animator.runtimeAnimatorController = pinkyBoy.animator.runtimeAnimatorController;
+            animator.avatar = pinkyBoy.animator.avatar;
+            Destroy(pinkyBoy.animator);
         }
         else if (nameModel == Tags.TheAkik)
         {
             theAkik.model3D.SetActive(true);
 
-            animator.runtimeAnimatorController = theAkik.animatorController;
-            //animator.avatar = theAkik.avatar;
+            animator.runtimeAnimatorController = theAkik.animator.runtimeAnimatorController;
+            animator.avatar = theAkik.animator.avatar;
+            Destroy(theAkik.animator);
         }
     }
 
@@ -78,6 +92,5 @@ public class PlayerModels : MonoBehaviourPun
 public class PlayerModel
 {
     public GameObject model3D;
-    public AnimatorController animatorController;
-    //public Avatar avatar;
+    public Animator animator;
 }
