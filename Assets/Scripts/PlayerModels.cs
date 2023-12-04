@@ -53,21 +53,21 @@ public class PlayerModels : MonoBehaviourPun
             badBoy.model3D.SetActive(true);
 
             animator.runtimeAnimatorController = badBoy.animatorController;
-            animator.avatar = badBoy.avatar;
+            //animator.avatar = badBoy.avatar;
         }
         else if (nameModel == Tags.PinkyBoy)
         {
             pinkyBoy.model3D.SetActive(true);
 
             animator.runtimeAnimatorController = pinkyBoy.animatorController;
-            animator.avatar = pinkyBoy.avatar;
+            //animator.avatar = pinkyBoy.avatar;
         }
         else if (nameModel == Tags.TheAkik)
         {
             theAkik.model3D.SetActive(true);
 
             animator.runtimeAnimatorController = theAkik.animatorController;
-            animator.avatar = theAkik.avatar;
+            //animator.avatar = theAkik.avatar;
         }
     }
 
@@ -79,5 +79,5 @@ public class PlayerModel
 {
     public GameObject model3D;
     public AnimatorController animatorController;
-    public Avatar avatar;
+    //public Avatar avatar;
 }
