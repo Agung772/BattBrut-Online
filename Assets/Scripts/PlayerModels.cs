@@ -38,6 +38,7 @@ public class PlayerModels : MonoBehaviourPun
         else
         {
             Debug.LogWarning("Tidak ada data model!");
+            Set(Tags.PinkyBoy);
         }
     }
         
@@ -74,6 +75,7 @@ public class PlayerModels : MonoBehaviourPun
 
             animator.runtimeAnimatorController = badBoy.animator.runtimeAnimatorController;
             animator.avatar = badBoy.animator.avatar;
+            transform.parent.GetComponent<PlayerShoot>().pointShoot = badBoy.pointShoot;
             Destroy(badBoy.animator);
         }
         else if (nameModel == Tags.PinkyBoy)
@@ -82,6 +84,7 @@ public class PlayerModels : MonoBehaviourPun
 
             animator.runtimeAnimatorController = pinkyBoy.animator.runtimeAnimatorController;
             animator.avatar = pinkyBoy.animator.avatar;
+            transform.parent.GetComponent<PlayerShoot>().pointShoot = pinkyBoy.pointShoot;
             Destroy(pinkyBoy.animator);
         }
         else if (nameModel == Tags.TheAkik)
@@ -90,7 +93,17 @@ public class PlayerModels : MonoBehaviourPun
 
             animator.runtimeAnimatorController = theAkik.animator.runtimeAnimatorController;
             animator.avatar = theAkik.animator.avatar;
+            transform.parent.GetComponent<PlayerShoot>().pointShoot = theAkik.pointShoot;
             Destroy(theAkik.animator);
+        }
+        else
+        {
+            pinkyBoy.model3D.SetActive(true);
+
+            animator.runtimeAnimatorController = pinkyBoy.animator.runtimeAnimatorController;
+            animator.avatar = pinkyBoy.animator.avatar;
+            transform.parent.GetComponent<PlayerShoot>().pointShoot = pinkyBoy.pointShoot;
+            Destroy(pinkyBoy.animator);
         }
     }
 
@@ -102,4 +115,5 @@ public class PlayerModel
 {
     public GameObject model3D;
     public Animator animator;
+    public Transform pointShoot;
 }

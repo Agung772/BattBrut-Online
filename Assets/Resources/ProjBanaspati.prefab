@@ -4926,6 +4926,8 @@ MonoBehaviour:
   playerStat: {fileID: 0}
   Coll: 0
   Trig: 0
+  sfxProjectile: {fileID: 8300000, guid: 072582faaffd33c4f8caab71556d0e39, type: 3}
+  playOnAwakeSFX: 0
 --- !u!114 &2895448740041642973
 MonoBehaviour:
   m_ObjectHideFlags: 0

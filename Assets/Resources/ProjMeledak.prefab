@@ -14467,10 +14467,12 @@ MonoBehaviour:
   destroy: 4
   destroyTimeColl: 0
   destroyPlayer: 0
-  ownNamePlayer: 
+  ownPhotonView: {fileID: 0}
   playerStat: {fileID: 0}
   Coll: 0
   Trig: 0
+  sfxProjectile: {fileID: 8300000, guid: 1ca9a43a9b07e4046b02c725aca4d7d2, type: 3}
+  playOnAwakeSFX: 0
 --- !u!114 &4144403866522342337
 MonoBehaviour:
   m_ObjectHideFlags: 0

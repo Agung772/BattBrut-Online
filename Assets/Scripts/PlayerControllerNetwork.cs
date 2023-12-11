@@ -139,6 +139,8 @@ public class PlayerControllerNetwork : MonoBehaviourPun
                     {
                         animator.SetTrigger(Tags.DoubleJump);
                     }
+
+                    AudioManager.instance.SetSFX(AudioManager.instance.SFXJump);
                 }
                 if (isGrounded && !onGrounded && Time.time > canJump)
                 {
@@ -215,6 +217,8 @@ public class PlayerControllerNetwork : MonoBehaviourPun
                     if (isGrounded) animator.SetTrigger(Tags.Dash);
                     else animator.SetTrigger(Tags.FlyDash);
                 }
+
+                AudioManager.instance.SetSFX(AudioManager.instance.SFXDash);
                 lastClickTime = -1f; 
             }
             else

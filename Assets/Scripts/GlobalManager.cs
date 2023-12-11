@@ -32,7 +32,7 @@ public class GlobalManager : MonoBehaviourPunCallbacks
 
         }
 
-        Leaderboard.instance.SetLeaderboard();
+        //Leaderboard.instance.SetLeaderboard();
         UIManager.instance.SetNotifText("Ada perubahan variabel player OnPlayerPropertiesUpdate");
 
 

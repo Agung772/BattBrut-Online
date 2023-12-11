@@ -21,12 +21,17 @@ public class ProjectileStat : MonoBehaviourPun
     public bool Coll;
     public bool Trig;
 
+    public AudioClip sfxProjectile;
+    public bool playOnAwakeSFX;
+
     bool use;
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
         rb.AddForce(transform.forward * speed, ForceMode.Impulse);
         Destroy(gameObject, destroy);
+
+        if (playOnAwakeSFX) AudioManager.instance.SetSFX(sfxProjectile);
     }
 
     public void SetPhotonViewPlayer(PhotonView temp)
@@ -46,6 +51,7 @@ public class ProjectileStat : MonoBehaviourPun
             use = true;
             var playerStat = collision.collider.GetComponent<PlayerStat>();
             //collision.collider.GetComponent<PhotonView>().RPC("HitPlayer", RpcTarget.All, ownPhotonView, damage);
+            if (!playOnAwakeSFX) AudioManager.instance.SetSFX(sfxProjectile);
             playerStat.HitPlayer(ownPhotonView, damage);
             if (destroyPlayer) Destroy(gameObject, destroyTimeColl);
         }
@@ -59,6 +65,7 @@ public class ProjectileStat : MonoBehaviourPun
             var playerStat = other.GetComponent<PlayerStat>();
             //other.GetComponent<PhotonView>().RPC("HitPlayer", RpcTarget.All, ownPhotonView, damage);
             //playerStat.HitPlayer(playerStat, damage);
+            if (!playOnAwakeSFX) AudioManager.instance.SetSFX(sfxProjectile);
             playerStat.HitPlayer(ownPhotonView, damage);
             if (destroyPlayer) Destroy(gameObject, destroyTimeColl);
         }

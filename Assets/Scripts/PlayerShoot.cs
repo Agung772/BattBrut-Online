@@ -7,7 +7,7 @@ public class PlayerShoot : MonoBehaviourPun
 {
     [SerializeField] float speedShoot;
     public DataProjectile dataProjectile;
-    [SerializeField] Transform pointShoot;
+    public Transform pointShoot;
 
     EventButton shootButton;
     PlayerControllerNetwork playerControllerNetwork;
