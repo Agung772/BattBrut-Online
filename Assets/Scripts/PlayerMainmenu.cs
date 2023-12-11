@@ -41,9 +41,13 @@ public class PlayerMainmenu : MonoBehaviour
         PlayerMainmenu[] players = FindObjectsOfType<PlayerMainmenu>();
         for (int i = 0; i < players.Length; i++)
         {
-            players[i].use = true;
-            use = true;
+            players[i].use = false;
+            players[i].animator.SetFloat(Tags.AnimasiMove, 0);
         }
+
+        use = true;
+        animator.SetFloat(Tags.AnimasiMove, 1);
+
         if (nameModel == NameModel.BadBoy) UIMainmenu.instance.SetPlayerModel(Tags.BadBoy);
         else if (nameModel == NameModel.PinkyBoy) UIMainmenu.instance.SetPlayerModel(Tags.PinkyBoy);
         else if (nameModel == NameModel.TheAkik) UIMainmenu.instance.SetPlayerModel(Tags.TheAkik);

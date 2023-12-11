@@ -13,7 +13,7 @@ public class ProjectileStat : MonoBehaviourPun
 
     public bool destroyPlayer;
 
-    public string ownNamePlayer;
+    public PhotonView ownPhotonView;
 
     public PlayerStat playerStat;
     Rigidbody rb;
@@ -29,12 +29,11 @@ public class ProjectileStat : MonoBehaviourPun
         Destroy(gameObject, destroy);
     }
 
-    [PunRPC]
-    public void SetNamePlayer(string namePlayer)
+    public void SetPhotonViewPlayer(PhotonView temp)
     {
         if (photonView.IsMine)
         {
-            ownNamePlayer = namePlayer;
+            ownPhotonView = temp;
         }
 
     }
@@ -46,8 +45,8 @@ public class ProjectileStat : MonoBehaviourPun
             Coll = true;
             use = true;
             var playerStat = collision.collider.GetComponent<PlayerStat>();
-            collision.collider.GetComponent<PhotonView>().RPC("HitPlayer", RpcTarget.All, ownNamePlayer, damage);
-            //playerStat.HitPlayer(playerStat, damage);
+            //collision.collider.GetComponent<PhotonView>().RPC("HitPlayer", RpcTarget.All, ownPhotonView, damage);
+            playerStat.HitPlayer(ownPhotonView, damage);
             if (destroyPlayer) Destroy(gameObject, destroyTimeColl);
         }
     }
@@ -58,8 +57,9 @@ public class ProjectileStat : MonoBehaviourPun
             Trig = true;
             use = true;
             var playerStat = other.GetComponent<PlayerStat>();
-            other.GetComponent<PhotonView>().RPC("HitPlayer", RpcTarget.All, ownNamePlayer, damage);
+            //other.GetComponent<PhotonView>().RPC("HitPlayer", RpcTarget.All, ownPhotonView, damage);
             //playerStat.HitPlayer(playerStat, damage);
+            playerStat.HitPlayer(ownPhotonView, damage);
             if (destroyPlayer) Destroy(gameObject, destroyTimeColl);
         }
     }

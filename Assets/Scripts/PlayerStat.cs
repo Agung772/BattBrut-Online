@@ -44,10 +44,7 @@ public class PlayerStat : MonoBehaviourPunCallbacks
             }
         }
 
-        if (Input.GetKeyUp(KeyCode.Q))
-        {
-            HitPlayer(photonView.name, 5);
-        }
+
         if (Input.GetKeyUp(KeyCode.Alpha1))
         {
             if (photonView.IsMine)
@@ -65,8 +62,8 @@ public class PlayerStat : MonoBehaviourPunCallbacks
         PhotonView photonView = GetComponent<PhotonView>();
         nameText.text = photonView.Controller.NickName;
     }
-    [PunRPC]
-    public void HitPlayer(string namePlayer,float damage)
+
+    public void HitPlayer(PhotonView ownPhotonView,float damage)
     {
         if (photonView.IsMine && HP > 0)
         {
@@ -74,7 +71,7 @@ public class PlayerStat : MonoBehaviourPunCallbacks
             HP -= damage;
             Gameplay_UI.instance.barHP.fillAmount = HP / maxHP;
             barHP.transform.localScale = new Vector3(HP / maxHP, 1, 1);
-            name = namePlayer;
+
 
             if (HP <= 0 && player.canMove)
             {
@@ -82,13 +79,25 @@ public class PlayerStat : MonoBehaviourPunCallbacks
                 IEnumerator Delayed()
                 {
                     player.canMove = false;
-                    yield return new WaitForSeconds(3);
-                    player.RespawnPlayer();
-                    player.canMove = true;
+
+                    //ownPhotonView.GetComponent<PlayerStat>().kill++;
+                    //ownPhotonView.Controller.CustomProperties[Tags.Kill] = ownPhotonView.GetComponent<PlayerStat>().kill;
+
+                    KillingPlayer();
+                    Gameplay_UI.instance.SetDeathUI(true);
+                    yield return new WaitForSeconds(2);
 
                     HP = 100;
                     Gameplay_UI.instance.barHP.fillAmount = HP / maxHP;
                     barHP.transform.localScale = new Vector3(HP / maxHP, 1, 1);
+                    player.RespawnPlayer();
+                    yield return new WaitForSeconds(1);
+                    Gameplay_UI.instance.SetDeathUI(false);
+                    yield return new WaitForSeconds(1);
+
+                    player.canMove = true;
+
+
                 }
             }
         }

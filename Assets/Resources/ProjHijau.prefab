@@ -14458,7 +14458,7 @@ MonoBehaviour:
   destroy: 5
   destroyTimeColl: 0
   destroyPlayer: 1
-  ownNamePlayer: 
+  ownPhotonView: {fileID: 0}
   playerStat: {fileID: 0}
   Coll: 0
   Trig: 0

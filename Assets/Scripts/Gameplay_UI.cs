@@ -12,8 +12,24 @@ public class Gameplay_UI : MonoBehaviour
     public EventButton shootButton;
     public EventButton jumpButton;
 
+    public GameObject deathUI;
+
     private void Awake()
     {
         instance = this;
+    }
+
+    public void SetDeathUI(bool value)
+    {
+        if (value)
+        {
+            deathUI.SetActive(true);
+            deathUI.GetComponent<Animator>().Play("Start");
+        }
+        else
+        {
+            deathUI.SetActive(false);
+            deathUI.GetComponent<Animator>().Play("Exit");
+        }
     }
 }

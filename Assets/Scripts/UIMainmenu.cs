@@ -23,6 +23,7 @@ public class UIMainmenu : MonoBehaviourPun
 
                 playerCustomProperties[Tags.PlayerModel] = nameModel;
                 PhotonNetwork.LocalPlayer.SetCustomProperties(playerCustomProperties);
+                Debug.Log(PhotonNetwork.LocalPlayer.CustomProperties[Tags.PlayerModel]);
 
             }
             catch

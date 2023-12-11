@@ -28,7 +28,7 @@ public class PlayerShoot : MonoBehaviourPun
         {
             if ((Input.GetKey(KeyCode.E) || shootButton.pressed) && playerControllerNetwork.onRun == 0)
             {
-                photonView.RPC("Shoot", RpcTarget.All);
+                Shoot();
             }
         }
         if (Input.GetKeyDown(KeyCode.T))
@@ -49,7 +49,6 @@ public class PlayerShoot : MonoBehaviourPun
     float cooldownTime;
 
 
-    [PunRPC]
     public void Shoot()
     {
         if (photonView.IsMine)
@@ -63,9 +62,11 @@ public class PlayerShoot : MonoBehaviourPun
                     cooldown = true;
 
                     GameObject projectile = PhotonNetwork.Instantiate(dataProjectile.projectilePrefab.name, pointShoot.transform.position, pointShoot.transform.rotation);
+
+                    PhotonView ownphotonView = GetComponent<PhotonView>();
                     //projectile.GetComponent<ProjectileStat>().playerStat = GetComponent<PlayerStat>();
-                    projectile.GetComponent<PhotonView>().RPC("SetNamePlayer", RpcTarget.AllBuffered, PhotonNetwork.NickName);
-                    //projectile.GetComponent<ProjectileStat>().SetNamePlayer(PhotonNetwork.NickName);
+                    //projectile.GetComponent<PhotonView>().RPC("SetNamePlayer", RpcTarget.AllBuffered, PhotonNetwork.NickName);
+                    projectile.GetComponent<ProjectileStat>().SetPhotonViewPlayer(ownphotonView);
                     yield return new WaitForSeconds(dataProjectile.cooldownTime);
                     cooldown = false;
                 }

@@ -1,37 +1,46 @@
 ﻿using Photon.Pun;
-
-
 using UnityEngine;
 
 
 public class PlayerModels : MonoBehaviourPun
 {
+    public static PlayerModels instance;
+
     public PlayerModel badBoy;
     public PlayerModel pinkyBoy;
     public PlayerModel theAkik;
 
+    private void Awake()
+    {
+        instance = this;
+    }
     private void Start()
     {
-        if (photonView.IsMine)
+
+    }
+
+    public void SetModelPlayer()
+    {
+        PhotonView photonView = transform.parent.GetComponent<PhotonView>();
+        string tempPlayerModel = (string)photonView.Controller.CustomProperties[Tags.PlayerModel];
+        if (tempPlayerModel == Tags.BadBoy)
         {
-            if (PhotonNetwork.LocalPlayer.CustomProperties[Tags.PlayerModel] == Tags.BadBoy)
-            {
-                Set(Tags.BadBoy);
-            }
-            else if (PhotonNetwork.LocalPlayer.CustomProperties[Tags.PlayerModel] == Tags.PinkyBoy)
-            {
-                Set(Tags.PinkyBoy);
-            }
-            else if (PhotonNetwork.LocalPlayer.CustomProperties[Tags.PlayerModel] == Tags.TheAkik)
-            {
-                Set(Tags.TheAkik);
-            }
-            else
-            {
-                Debug.LogWarning("Tidak ada data model!");
-            }
+            Set(Tags.BadBoy);
+        }
+        else if (tempPlayerModel == Tags.PinkyBoy)
+        {
+            Set(Tags.PinkyBoy);
+        }
+        else if (tempPlayerModel == Tags.TheAkik)
+        {
+            Set(Tags.TheAkik);
+        }
+        else
+        {
+            Debug.LogWarning("Tidak ada data model!");
         }
     }
+        
     private void Update()
     {
         if (photonView.IsMine)

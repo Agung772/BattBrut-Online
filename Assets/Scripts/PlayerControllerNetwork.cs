@@ -5,6 +5,8 @@ using System.Collections.Generic;
 using UnityEngine;
 public class PlayerControllerNetwork : MonoBehaviourPun
 {
+    public bool active;
+
     CinemachineVirtualCamera cinemachineFreeLook;
     public bool isControlled = true;
     public bool canMove = true;
@@ -72,6 +74,8 @@ public class PlayerControllerNetwork : MonoBehaviourPun
         characterController.enabled = false;
         characterController.transform.position = Vector3.up;
         characterController.enabled = true;
+
+        playerModels.SetModelPlayer();
     } // Update is called once per frame
 
     public void RespawnPlayer()
@@ -219,6 +223,8 @@ public class PlayerControllerNetwork : MonoBehaviourPun
             }
         }
     }
+
+    public PlayerModels playerModels;
     public static void RefreshInstance(ref PlayerControllerNetwork playerControllerNetwork, 
         PlayerControllerNetwork prefab)
     {

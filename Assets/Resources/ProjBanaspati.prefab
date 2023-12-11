@@ -4922,7 +4922,7 @@ MonoBehaviour:
   destroy: 10
   destroyTimeColl: 3
   destroyPlayer: 1
-  ownNamePlayer: 
+  ownPhotonView: {fileID: 0}
   playerStat: {fileID: 0}
   Coll: 0
   Trig: 0
